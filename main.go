@@ -1,8 +1,6 @@
 package main
 
-import (
-	"github.com/tmluthfiana/game_character/api"
-)
+import "gamecharacter/api"
 
 func main() {
 	api.Run()

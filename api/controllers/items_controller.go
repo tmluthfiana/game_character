@@ -8,9 +8,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"game_character/api/models"
-	"game_character/api/responses"
-	"game_character/api/utils/formaterror"
+	"gamecharacter/api/models"
+	"gamecharacter/api/responses"
+	"gamecharacter/api/utils/formaterror"
 
 	"github.com/gorilla/mux"
 )
@@ -34,7 +34,7 @@ func (server *Server) CreateItem(w http.ResponseWriter, r *http.Request) {
 		responses.ERROR(w, http.StatusUnprocessableEntity, err)
 		return
 	}
-	
+
 	itemCreated, err := item.SaveItem(server.DB)
 	if err != nil {
 		formattedError := formaterror.FormatError(err.Error())
@@ -116,7 +116,7 @@ func (server *Server) UpdateItem(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	itemUpdate.ID = item.ID 
+	itemUpdate.ID = item.ID
 
 	if itemUpdate.Character_code != item.Character_code {
 		responses.ERROR(w, http.StatusUnauthorized, errors.New("Not Allowed to change character code"))

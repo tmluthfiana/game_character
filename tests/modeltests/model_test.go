@@ -6,8 +6,8 @@ import (
 	"os"
 	"testing"
 
-	"game_character/api/controllers"
-	"game_character/api/models"
+	"gamecharacter/api/controllers"
+	"gamecharacter/api/models"
 
 	"github.com/jinzhu/gorm"
 	"github.com/joho/godotenv"
@@ -71,16 +71,16 @@ func refreshItemTable() error {
 
 func seedOneItem() (models.Item, error) {
 
-	err := refreshUserAndItemTable()
+	err := refreshItemTable()
 	if err != nil {
 		return models.Item{}, err
 	}
-	
+
 	item := models.Item{
-		Name:   "Bilbo",
+		Name:           "Bilbo",
 		Character_code: 3,
-		Power: 20,
-	},
+		Power:          20,
+	}
 
 	err = server.DB.Model(&models.Item{}).Create(&item).Error
 	if err != nil {
@@ -94,18 +94,18 @@ func seedItems() ([]models.Item, error) {
 	var err error
 
 	if err != nil {
-		return []models.User{}, []models.Item{}, err
+		return []models.Item{}, err
 	}
 	var items = []models.Item{
 		models.Item{
-			Name:   "Sauron",
+			Name:           "Sauron",
 			Character_code: 1,
-			Power: 110,
+			Power:          110,
 		},
 		models.Item{
-			Name:   "Turiel",
+			Name:           "Turiel",
 			Character_code: 2,
-			Power: 70,
+			Power:          70,
 		},
 	}
 

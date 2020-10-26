@@ -1,4 +1,4 @@
-module github.com/tmluthfiana/game_character
+module gamecharacter
 
 go 1.13
 

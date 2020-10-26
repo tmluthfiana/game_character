@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"game_character/api/models"
+	"gamecharacter/api/models"
 
 	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
@@ -44,7 +44,7 @@ func (server *Server) Initialize(Dbdriver, DbUser, DbPassword, DbPort, DbHost, D
 		}
 	}
 
-	server.DB.Debug().AutoMigrate(&models.User{}, &models.Post{}) //database migration
+	server.DB.Debug().AutoMigrate(&models.Item{}) //database migration
 
 	server.Router = mux.NewRouter()
 

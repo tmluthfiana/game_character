@@ -4,7 +4,7 @@ import (
 	"log"
 	"testing"
 
-	"game_character/api/models"
+	"gamecharacter/api/models"
 
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"gopkg.in/go-playground/assert.v1"
@@ -16,7 +16,7 @@ func TestFindAllItems(t *testing.T) {
 	if err != nil {
 		log.Fatalf("Error refreshing item table %v\n", err)
 	}
-	_, _, err = seedItems()
+	_, err = seedItems()
 	if err != nil {
 		log.Fatalf("Error seeding item table %v\n", err)
 	}
@@ -36,9 +36,9 @@ func TestSaveItem(t *testing.T) {
 	}
 
 	newItem := models.Item{
-		Name:   "Gollum",
+		Name:           "Gollum",
 		Character_code: 3,
-		Power: 30,
+		Power:          30,
 	}
 	savedItem, err := newItem.SaveItem(server.DB)
 	if err != nil {
@@ -74,18 +74,15 @@ func TestGetItemByID(t *testing.T) {
 
 func TestUpdateItem(t *testing.T) {
 
-	err := refreshUserAndItemTable()
+	err := refreshItemTable()
 	if err != nil {
 		log.Fatalf("Error refreshing user and item table: %v\n", err)
 	}
-	item, err := seedOneItem()
-	if err != nil {
-		log.Fatalf("Error Seeding table")
-	}
+	
 	itemUpdate := models.Item{
-		Name:   "Bilbooo",
+		Name:           "Bilbooo",
 		Character_code: 3,
-		Power: 15,
+		Power:          15,
 	}
 	updatedItem, err := itemUpdate.UpdateAItem(server.DB)
 	if err != nil {
@@ -97,4 +94,3 @@ func TestUpdateItem(t *testing.T) {
 	assert.Equal(t, updatedItem.Character_code, itemUpdate.Character_code)
 	assert.Equal(t, updatedItem.Power, itemUpdate.Power)
 }
-

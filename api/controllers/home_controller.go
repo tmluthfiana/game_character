@@ -3,7 +3,7 @@ package controllers
 import (
 	"net/http"
 
-	"game_character/api/responses"
+	"gamecharacter/api/responses"
 )
 
 func (server *Server) Home(w http.ResponseWriter, r *http.Request) {
