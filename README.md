@@ -17,6 +17,8 @@
 - Run with docker : docker-compose up --build
 
 # Usage
+- configuration the .env and .yml file with your environment
+- create db gamecharacter_api in postgresql and db gamecharacter_test for testing
 - use postman to test it. 
 get all data => GET : http://localhost:8080/items
 update data => PUT : http://localhost:8080/items/{id}
